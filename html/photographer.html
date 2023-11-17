@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="../css/style.css" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="../assets/favicon.png" />
+		<link
+			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Fisheye - photographe</title>
+	</head>
+	<body>
+		<header class="logo-header" role="banner">
+			<a
+				href="../index.html"
+				aria-label="Lien vers la page d'accueil"
+				tabindex="0"
+				><img
+					alt="Fisheye logo"
+					src="../assets/images/logo.png"
+					class="logo"
+			/></a>
+		</header>
+		<main id="main" role="main"></main>
+		<div class="modal-wrapper"></div>
+		<div class="lightbox-wrapper"></div>
+		<script
+			src="https://kit.fontawesome.com/fa1582c6b9.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="./../scripts/api/getPhotographers.js"></script>
+
+		<!-- Components -->
+		<script src="./../scripts/components/headerComponent.js"></script>
+		<script src="./../scripts/components/sortingComponent.js"></script>
+		<script src="./../scripts/components/photoComponent.js"></script>
+		<script src="./../scripts/components/videoComponent.js"></script>
+		<script src="./../scripts/components/galleryComponent.js"></script>
+		<script src="./../scripts/components/likesComponent.js"></script>
+		<script src="./../scripts/components/contactFormComponent.js"></script>
+		<script src="./../scripts/components/lightboxComponent.js"></script>
+
+		<!-- Factory -->
+		<script src="./../scripts/factories/mediaFactory.js"></script>
+
+		<!-- Models -->
+		<script src="./../scripts/models/photographerModel.js"></script>
+		<script src="./../scripts/models/mediaModel.js"></script>
+		<script src="./../scripts/models/photoModel.js"></script>
+		<script src="./../scripts/models/videoModel.js"></script>
+		<script src="./../scripts/models/lightboxModel.js"></script>
+
+		<!-- Pages -->
+		<script src="./../scripts/pages/photographer.js"></script>
+
+		<!-- Vues -->
+		<script src="./../scripts/vues/profileVue.js"></script>
+	</body>
+</html>

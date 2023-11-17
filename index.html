@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+	<head>
+		<link href="./css/style.css" rel="stylesheet" type="text/css" />
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="assets/favicon.png" />
+		<link
+			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Fisheye</title>
+	</head>
+	<body>
+		<header role="banner">
+			<img
+				role="link"
+				alt="Fisheye Home page"
+				src="./assets/images/logo.png"
+				class="logo"
+			/>
+			<h1>Nos photographes</h1>
+		</header>
+		<main id="main" role="main">
+			<section
+				class="photographer_section"
+				aria-label="Photographers section"
+			></section>
+		</main>
+		<script src="./scripts/api/getPhotographers.js"></script>
+		<script src="./scripts/models/photographerModel.js"></script>
+		<script src="./scripts/components/photographerComponent.js"></script>
+		<script src="./scripts/pages/index.js"></script>
+	</body>
+</html>

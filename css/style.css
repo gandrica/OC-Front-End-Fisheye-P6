@@ -1,0 +1,136 @@
+@import url("photographer.css");
+
+:root {
+	--text-color-primary: #d3573c;
+	--text-color-secondary: #901c1c;
+	--button-bg-color-primary: #901c1c;
+	--button-bg-color-secondary: #d3573c;
+	--button-text-color-primary: #fafafa;
+	--button-text-color-secondary: #525252;
+	--gray-color: #757575;
+}
+
+body {
+	font-family: "DM Sans", sans-serif;
+	margin: 0;
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 90px;
+}
+
+h1 {
+	color: #901c1c;
+	margin-right: 100px;
+}
+
+.logo {
+	height: 50px;
+	margin-left: 100px;
+}
+
+.photographer_section {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 70px;
+	margin-top: 100px;
+}
+
+.photographer_section article {
+	justify-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.photographer_section article h2 {
+	color: var(--text-color-primary);
+	font-size: 36px;
+	font-weight: 500;
+	margin-bottom: 0;
+}
+
+.photographer_section article a {
+	cursor: pointer;
+	text-decoration: none;
+	justify-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.link-index {
+	height: 200px;
+	width: 200px;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.profile__picture {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+}
+
+.link-index:hover {
+	border: 3px solid black;
+}
+
+.profile__picture.id-243 {
+	transform: scale(1.5);
+	object-fit: cover;
+	object-position: 0 -26px;
+}
+
+.profile__picture.id-930 {
+	transform: scale(1.8);
+	object-fit: cover;
+	object-position: -54px 20px;
+}
+
+.profile__picture.id-82 {
+	transform: scale(1.2);
+	object-fit: cover;
+	object-position: 14px 0;
+}
+.profile__picture.id-527 {
+	transform: scale(1.2);
+	object-fit: cover;
+	object-position: 0 -26px;
+}
+.profile__picture.id-925,
+.profile__picture.id-195 {
+	transform: scale(1.8);
+	object-fit: cover;
+	object-position: -50px 20px;
+}
+
+.profile__description {
+	justify-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	line-height: 1.5;
+	margin-top: 0;
+}
+
+.profile__description .city-country {
+	color: var(--button-bg-color-primary);
+	font-size: 1.1em;
+}
+
+.profile__description .tagline {
+	font-size: 0.9em;
+}
+
+.profile__description .price {
+	color: var(--gray-color);
+	font-size: 0.9em;
+}
