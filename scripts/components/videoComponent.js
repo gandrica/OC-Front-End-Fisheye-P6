@@ -32,7 +32,11 @@ class VideoComponent {
 		description.setAttribute("class", "media__description");
 		description.innerHTML = `
 					<span class="media__title">${this._media.title}</span>
-					<span class="media__likes">${this._media.likes} <i class="fa-solid fa-heart"></i></span>
+					<span class="media__likes">${this._media.likes} ${
+			description.classList.contains("liked")
+				? '<i class="fa-solid fa-heart">'
+				: '<i class="fa-regular fa-heart">'
+		}</i></span>
 				`;
 
 		this.$wrapper.appendChild(link);

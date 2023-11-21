@@ -121,8 +121,6 @@ function keepTheFocus(selector) {
 			}
 		});
 	});
-
-	console.log(children);
 }
 
 function displayModal(name) {
@@ -227,13 +225,65 @@ function createLightbox(media, photographer) {
 }
 
 function displayLightbox(photographer) {
-	const galleryMedias = document.querySelectorAll(".media__container");
+	const galleryMedias = document.querySelectorAll(".media__link");
 	galleryMedias.forEach((media) =>
 		media.addEventListener("click", () => {
-			createLightbox(media, photographer);
+			createLightbox(media.closest(".media__container"), photographer);
 			keepTheFocus(".lightbox");
 		})
 	);
+}
+
+function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
+	likeSpan.innerHTML = `
+		<span class="media__likes">
+			${likes}
+			${
+				mediaContainer.classList.contains("liked")
+					? '<i class="fa-solid fa-heart">'
+					: '<i class="fa-regular fa-heart">'
+			}
+			</i>
+		</span>
+	`;
+
+	const likesSpanDiv = document.querySelector(".likes");
+	likesSpanDiv.innerHTML = `${photographer.medias
+		.map((media) => media.likes)
+		.reduce((acc, cum) => acc + cum)} <i class="fa-solid fa-heart">`;
+}
+
+function manageLikes(photographer) {
+	const galleryContainer = document.querySelector(".gallery__container");
+	galleryContainer.addEventListener("click", (e) => {
+		if (e.target.tagName === "I") {
+			const mediaContainer = e.target.closest(".media__container");
+			const medias = photographer.medias;
+			const mediaLikeSpan = e.target.closest(".media__likes");
+			const mediaIndex = medias.findIndex(
+				(media) => +media.id === +mediaContainer.id
+			);
+			if (!mediaContainer.classList.contains("liked")) {
+				mediaContainer.classList.add("liked");
+				photographer.medias[mediaIndex].likes++;
+				modifyLikesSpan(
+					mediaLikeSpan,
+					mediaContainer,
+					photographer.medias[mediaIndex].likes,
+					photographer
+				);
+			} else {
+				mediaContainer.classList.remove("liked");
+				photographer.medias[mediaIndex].likes--;
+				modifyLikesSpan(
+					mediaLikeSpan,
+					mediaContainer,
+					photographer.medias[mediaIndex].likes,
+					photographer
+				);
+			}
+		}
+	});
 }
 
 async function init() {
@@ -244,6 +294,7 @@ async function init() {
 	displayModal(photographer.name);
 	sortingItems(photographer);
 	displayLightbox(photographer);
+	manageLikes(photographer);
 }
 
 init();
