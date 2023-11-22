@@ -14,15 +14,20 @@ async function displayData(photographers) {
 }
 
 function getCardId() {
-	const links = document.querySelectorAll("article a");
-	links.forEach((link) => {
-		link.addEventListener("click", function (e) {
+	const photographersSection = document.querySelector(
+		".photographer_section"
+	);
+
+	photographersSection.addEventListener("click", function (e) {
+		if (e.target.classList.contains("profile__picture")) {
 			const targetId = e.target.closest("article").id;
-			link.setAttribute(
-				"href",
-				`./html/photographer.html?id=${targetId}`
-			);
-		});
+			e.target
+				.closest("a")
+				.setAttribute(
+					"href",
+					`./html/photographer.html?id=${targetId}`
+				);
+		}
 	});
 }
 

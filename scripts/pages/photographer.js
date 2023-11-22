@@ -22,7 +22,7 @@ function displayPhotographer(photographer) {
 	photographersSection.appendChild(userProfileDOM);
 }
 
-//Decorator
+//Decorator Design Pattern
 function displayOptions(photographer) {
 	photographer.listItems = ["Popularité", "Date", "Titre"];
 	return photographer;
@@ -64,7 +64,6 @@ function cleanAndPaintSection(photographer) {
 
 function sortingItems(photographer) {
 	const sortingBox = document.querySelector(".sorting-box");
-	const sortingItems = document.querySelectorAll(".sorting-item");
 
 	sortingBox.addEventListener("mouseover", (e) => {
 		e.target.setAttribute("aria-expanded", "true");
@@ -73,8 +72,8 @@ function sortingItems(photographer) {
 		e.target.setAttribute("aria-expanded", "false");
 	});
 
-	sortingItems.forEach((item) => {
-		item.addEventListener("click", (e) => {
+	sortingBox.addEventListener("click", (e) => {
+		if (e.target.tagName === "P") {
 			modifyList(photographer, e.target.textContent);
 			const firstItem = photographer.listItems[0];
 			if (firstItem === "Popularité") {
@@ -87,7 +86,7 @@ function sortingItems(photographer) {
 				sortByTitle(photographer.medias);
 				cleanAndPaintSection(photographer);
 			}
-		});
+		}
 	});
 }
 
@@ -225,13 +224,14 @@ function createLightbox(media, photographer) {
 }
 
 function displayLightbox(photographer) {
-	const galleryMedias = document.querySelectorAll(".media__link");
-	galleryMedias.forEach((media) =>
-		media.addEventListener("click", () => {
-			createLightbox(media.closest(".media__container"), photographer);
+	const galleryContainer = document.querySelector(".gallery__container");
+
+	galleryContainer.addEventListener("click", (e) => {
+		if (e.target.classList.contains("media__image")) {
+			createLightbox(e.target.closest(".media__container"), photographer);
 			keepTheFocus(".lightbox");
-		})
-	);
+		}
+	});
 }
 
 function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {

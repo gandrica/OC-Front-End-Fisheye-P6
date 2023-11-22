@@ -47,7 +47,7 @@ class FormModal {
 						</div>
 					</div>
                     
-                    <div role="button" name="sent-button" id="sent-button" class="contact_button" tabindex="0" aria-label=" Button type submit"><p>Envoyer</p></div>
+                    <div role="button" aria-label="Close Contact Form" name="sent-button" id="sent-button" class="contact_button" tabindex="0" aria-label=" Button type submit"><p>Envoyer</p></div>
                 </form>
             </div>;
         `;

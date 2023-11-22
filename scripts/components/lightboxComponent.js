@@ -14,9 +14,9 @@ class LightboxComponent {
 	createLightbox() {
 		this.$wrapper.innerHTML = `
 		<div class="icons-div">
-			<span class="lightbox-close-icon" tabindex="0" role="button" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></span>
-			<span class="lightbox-left-icon" tabindex="0" role="link" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></span>
-			<span class="lightbox-right-icon" tabindex="0" role="link" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></span>
+			<span role="link" aria-label="Close dialog" class="lightbox-close-icon" tabindex="0" role="button" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></span>
+			<span role="link" aria-label="Previous image" class="lightbox-left-icon" tabindex="0" role="link" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></span>
+			<span role="link" aria-label="Next image" class="lightbox-right-icon" tabindex="0" role="link" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></span>
 		</div>       
         `;
 
