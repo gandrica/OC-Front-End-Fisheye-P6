@@ -29,6 +29,19 @@ function getCardId() {
 				);
 		}
 	});
+
+	photographersSection.addEventListener("keydown", function (e) {
+		const picture = e.target.children[0].children[0];
+		if (picture.classList.contains("profile__picture") && e.key === " ") {
+			const targetId = picture.closest("article").id;
+			picture
+				.closest("a")
+				.setAttribute(
+					"href",
+					`./html/photographer.html?id=${targetId}`
+				);
+		}
+	});
 }
 
 async function init() {

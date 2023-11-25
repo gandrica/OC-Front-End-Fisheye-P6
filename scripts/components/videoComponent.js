@@ -11,6 +11,7 @@ class VideoComponent {
 		const link = document.createElement("a");
 		link.setAttribute("class", "media__link");
 		link.setAttribute("href", "#");
+		link.setAttribute("tabindex", "0");
 
 		const video = document.createElement("video");
 
@@ -32,10 +33,10 @@ class VideoComponent {
 		description.setAttribute("class", "media__description");
 		description.innerHTML = `
 					<span class="media__title">${this._media.title}</span>
-					<span class="media__likes aria-label="likes"">${this._media.likes} ${
+					<span class="media__likes aria-label="likes">${this._media.likes} ${
 			description.classList.contains("liked")
-				? '<i class="fa-solid fa-heart">'
-				: '<i class="fa-regular fa-heart">'
+				? '<i class="fa-solid fa-heart" tabindex="0">'
+				: '<i class="fa-regular fa-heart" tabindex="0">'
 		}</i></span>
 				`;
 

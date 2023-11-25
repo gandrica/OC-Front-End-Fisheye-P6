@@ -58,7 +58,6 @@ class FormModal {
 		this.$modalWrapper.style.display = "flex";
 
 		this.$modalWrapper.style.zIndex = "3";
-		console.log(this.$wrapper);
 
 		this.$wrapper.focus();
 	}

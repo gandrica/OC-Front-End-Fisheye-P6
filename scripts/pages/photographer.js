@@ -88,6 +88,26 @@ function sortingItems(photographer) {
 			}
 		}
 	});
+
+	sortingBox.addEventListener("keydown", (e) => {
+		if (e.key === " " || e.key === "Enter") {
+			sortingBox.focus();
+			if (e.target.tagName === "P") {
+				modifyList(photographer, e.target.textContent);
+				const firstItem = photographer.listItems[0];
+				if (firstItem === "Popularité") {
+					sortByLikes(photographer.medias);
+					cleanAndPaintSection(photographer);
+				} else if (firstItem === "Date") {
+					sortByDate(photographer.medias);
+					cleanAndPaintSection(photographer);
+				} else if (firstItem === "Titre") {
+					sortByTitle(photographer.medias);
+					cleanAndPaintSection(photographer);
+				}
+			}
+		}
+	});
 }
 
 function closeModal(formModal) {
@@ -109,14 +129,43 @@ function closeModal(formModal) {
 	});
 }
 
-function keepTheFocus(selector) {
+function tabManagement(selector, modalObject) {
 	const modal = document.querySelector(selector);
+	const modalWrapper = document.querySelector(".modal-wrapper");
+	const lightboxWrapper = document.querySelector(".lightbox-wrapper");
+	modalWrapper.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") modalObject.closeModal();
+	});
+	lightboxWrapper.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") modalObject.closeLightbox();
+	});
 	const children = modal.querySelectorAll('[tabindex="0"]');
 	children.forEach((child, i) => {
 		child.addEventListener("keydown", (e) => {
 			if (e.key === "Tab" && i === children.length - 1) {
 				e.preventDefault();
 				children[0].focus();
+			}
+			if (modalObject.$wrapper.classList.contains("modal")) {
+				if (
+					(e.key === " " || e.key === "Enter") &&
+					(i === 0 || i === 5)
+				) {
+					if (i === 0) modalObject.closeModal();
+					else {
+						if (!checkInputs()) {
+							console.log("Invalid inputs");
+						} else {
+							modal.querySelector("form").reset();
+							modalObject.closeModal();
+						}
+					}
+				}
+			} else {
+				if (i === 2) {
+					e.preventDefault();
+					children[0].focus();
+				}
 			}
 		});
 	});
@@ -128,7 +177,7 @@ function displayModal(name) {
 
 	contactButton.addEventListener("click", () => {
 		formModal.createForm();
-		keepTheFocus("#contact_modal");
+		tabManagement("#contact_modal", formModal);
 		closeModal(formModal);
 	});
 }
@@ -204,10 +253,16 @@ function createLightbox(media, photographer) {
 	const lightboxModel = new Lightbox(mediaToFind, photographer.medias);
 	let lightbox = new LightboxComponent(lightboxModel);
 	lightbox.createLightbox();
+	tabManagement(".lightbox", lightbox);
 
 	const closeIcon = document.querySelector(".lightbox-close-icon");
 	closeIcon.addEventListener("click", () => {
 		lightbox.closeLightbox();
+	});
+	closeIcon.addEventListener("keydown", (e) => {
+		if (e.key === " " || e.key === "Espace") {
+			lightbox.closeLightbox();
+		}
 	});
 
 	const leftIcon = document.querySelector(".lightbox-left-icon");
@@ -215,21 +270,79 @@ function createLightbox(media, photographer) {
 		lightbox.clearLightbox();
 		createLightbox(lightboxModel.previousMedia(), photographer);
 	});
+	leftIcon.addEventListener("keydown", (e) => {
+		if (e.key === " " || e.key === "Espace") {
+			lightbox.clearLightbox();
+			createLightbox(lightboxModel.previousMedia(), photographer);
+		}
+	});
 
 	const rightIcon = document.querySelector(".lightbox-right-icon");
 	rightIcon.addEventListener("click", () => {
 		lightbox.clearLightbox();
 		createLightbox(lightboxModel.nextMedia(), photographer);
 	});
+	rightIcon.addEventListener("keydown", (e) => {
+		if (e.key === " " || e.key === "Espace") {
+			lightbox.clearLightbox();
+			createLightbox(lightboxModel.nextMedia(), photographer);
+		}
+	});
 }
 
 function displayLightbox(photographer) {
 	const galleryContainer = document.querySelector(".gallery__container");
+	const lightbox = new LightboxComponent();
 
 	galleryContainer.addEventListener("click", (e) => {
 		if (e.target.classList.contains("media__image")) {
 			createLightbox(e.target.closest(".media__container"), photographer);
-			keepTheFocus(".lightbox");
+		} else if (e.target.classList.contains("media__video")) {
+			createLightbox(e.target.closest(".media__container"), photographer);
+		}
+	});
+	galleryContainer.addEventListener("keydown", (e) => {
+		const image = e.target.children[0];
+		if (e.key === " " || e.key === "Enter") {
+			if (e.target.tagName === "I") {
+				const mediaContainer = e.target.closest(".media__container");
+				const medias = photographer.medias;
+				const mediaLikeSpan = e.target.closest(".media__likes");
+				const mediaIndex = medias.findIndex(
+					(media) => +media.id === +mediaContainer.id
+				);
+				if (!mediaContainer.classList.contains("liked")) {
+					mediaContainer.classList.add("liked");
+					photographer.medias[mediaIndex].likes++;
+					modifyLikesSpan(
+						mediaLikeSpan,
+						mediaContainer,
+						photographer.medias[mediaIndex].likes,
+						photographer
+					);
+				} else {
+					mediaContainer.classList.remove("liked");
+					photographer.medias[mediaIndex].likes--;
+					modifyLikesSpan(
+						mediaLikeSpan,
+						mediaContainer,
+						photographer.medias[mediaIndex].likes,
+						photographer
+					);
+				}
+			} else {
+				if (image.classList.contains("media__image")) {
+					createLightbox(
+						image.closest(".media__container"),
+						photographer
+					);
+				} else if (image.classList.contains("media__video")) {
+					createLightbox(
+						e.target.closest(".media__container"),
+						photographer
+					);
+				}
+			}
 		}
 	});
 }
@@ -240,8 +353,8 @@ function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
 			${likes}
 			${
 				mediaContainer.classList.contains("liked")
-					? '<i class="fa-solid fa-heart">'
-					: '<i class="fa-regular fa-heart">'
+					? '<i class="fa-solid fa-heart" tabindex="0">'
+					: '<i class="fa-regular fa-heart" tabindex="0">'
 			}
 			</i>
 		</span>
@@ -287,7 +400,6 @@ function manageLikes(photographer) {
 }
 
 async function init() {
-	// Récupère les datas des photographes
 	const photographer = await getPhotographer();
 	displayOptions(photographer);
 	displayPhotographer(new Photographer(photographer));

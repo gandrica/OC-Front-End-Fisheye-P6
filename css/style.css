@@ -63,27 +63,39 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 .link-index {
-	height: 200px;
-	width: 200px;
+	height: 260px;
+	width: 320px;
 	overflow: hidden;
-	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
-.profile__picture {
-	height: 200px;
-	width: 200px;
-	border-radius: 50%;
-}
-
-.link-index:hover {
+.link-index:hover,
+.link-index:focus {
 	border: 3px solid black;
 }
 
+.profile__image-container {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.profile__picture {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
 .profile__picture.id-243 {
-	transform: scale(1.5);
+	transform: scale(1.8);
 	object-fit: cover;
 	object-position: 0 -26px;
 }
@@ -110,7 +122,13 @@ h1 {
 	object-fit: cover;
 	object-position: -50px 20px;
 }
-
+.profile__image-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 12px 0 4px;
+}
 .profile__description {
 	justify-self: center;
 	display: flex;
