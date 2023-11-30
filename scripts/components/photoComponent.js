@@ -33,7 +33,7 @@ class PhotoComponent {
 		);
 		description.innerHTML = `
 					<span class="media__title">${this._media.title}</span>
-					<span class="media__likes">${this._media.likes} <i class="fa-regular fa-heart" tabindex="0">
+					<span class="media__likes">${this._media.likes} <i class="fa-regular fa-heart" aria-label="Heart icon" tabindex="0">
 		</i></span>
 				`;
 

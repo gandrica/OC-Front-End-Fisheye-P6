@@ -24,7 +24,7 @@ class LikesComponent {
 		const photosLikes = this.getLikes(this._photographer.medias);
 
 		this.$wrapper.innerHTML = `
-            <span class="likes">${photosLikes} <i class="fa-solid fa-heart"></i></span>
+            <span class="likes">${photosLikes} <i class="fa-solid fa-heart" aria-label="Heart icon"></i></span>
             <span class="likes__price">${this._photographer.price}&euro; / jour</span>
             `;
 

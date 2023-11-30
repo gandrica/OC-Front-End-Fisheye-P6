@@ -384,8 +384,8 @@ function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
 			
 			${
 				mediaContainer.classList.contains("liked")
-					? '<i class="fa-solid fa-heart" tabindex="0">'
-					: '<i class="fa-regular fa-heart" tabindex="0">'
+					? '<i class="fa-solid fa-heart" aria-label="Heart icon" tabindex="0">'
+					: '<i class="fa-regular fa-heart" aria-label="Heart icon" tabindex="0">'
 			}
 			</i>
 		</span>
@@ -395,7 +395,9 @@ function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
 	const likesSpanDiv = document.querySelector(".likes");
 	likesSpanDiv.innerHTML = `${photographer.medias
 		.map((media) => media.likes)
-		.reduce((acc, cum) => acc + cum)} <i class="fa-solid fa-heart">`;
+		.reduce(
+			(acc, cum) => acc + cum
+		)} <i class="fa-solid fa-heart" aria-label="Heart icon">`;
 }
 
 // Gestion des likes d'une media
