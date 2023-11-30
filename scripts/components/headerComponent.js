@@ -37,7 +37,7 @@ class HeaderComponent {
 		contactButton.setAttribute("id", "contact-button");
 		contactButton.setAttribute("tabindex", "0");
 		contactButton.setAttribute("aria-haspopup", "true");
-		contactButton.setAttribute("aria-label", "Contact Me");
+		contactButton.setAttribute("aria-label", "Contactez-moi");
 		contactButton.textContent = "Contactez-moi";
 
 		const imgDiv = document.createElement("div");

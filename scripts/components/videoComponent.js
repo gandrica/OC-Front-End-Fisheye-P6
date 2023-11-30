@@ -43,8 +43,8 @@ class VideoComponent {
 					<span class="media__title">${this._media.title}</span>
 					<span class="media__likes">${this._media.likes} ${
 						description.classList.contains("liked")
-							? '<i class="fa-solid fa-heart" aria-label="Heart icon" tabindex="0">'
-							: '<i class="fa-regular fa-heart" aria-label="Heart icon" tabindex="0">'
+							? '<i class="fa-solid fa-heart" role="img" tabindex="0">'
+							: '<i class="fa-regular fa-heart" role="img" aria-label="Heart icon" tabindex="0">'
 					}</i></span>
 				`;
 		/* eslint-enable */
