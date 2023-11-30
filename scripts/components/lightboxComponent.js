@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class LightboxComponent {
 	constructor(media) {
 		this._media = media;
@@ -11,6 +12,7 @@ class LightboxComponent {
 		this.$lightboxWrapper = document.querySelector(".lightbox-wrapper");
 	}
 
+	//Crééer le HTML de la Lightbox
 	createLightbox() {
 		this.$wrapper.innerHTML = `
 		<div class="icons-div">
@@ -20,7 +22,7 @@ class LightboxComponent {
 		</div>       
         `;
 
-		const mediaFactory = new MediaFactory(this._media);
+		const mediaFactory = new MediaFactory(this._media); // eslint-disable-line
 
 		this.$wrapper.appendChild(mediaFactory);
 		this.$lightboxWrapper.appendChild(this.$wrapper);
@@ -30,11 +32,14 @@ class LightboxComponent {
 		this.$wrapper.focus();
 	}
 
+	//Fermer la Lightbox
 	closeLightbox() {
 		this.$lightboxWrapper.style.display = "none";
 		this.$lightboxWrapper.style.zIndex = "1";
 		this.clearLightbox();
 	}
+
+	// Nettoyer le HTML de la Lightbox
 	clearLightbox() {
 		this.$lightboxWrapper.innerHTML = "";
 		return this.$lightboxWrapper;

@@ -1,8 +1,10 @@
+//Obtenir le photographe à l'aide de l'ID passer en URL
 async function getPhotographer() {
 	let params = new URL(document.location).searchParams;
 	const photographerId = +params.get("id");
-	const { photographers } = await getPhotographers();
-	const { medias } = await getMedias();
+
+	const { photographers } = await getPhotographers(); // eslint-disable-line
+	const { medias } = await getMedias(); // eslint-disable-line
 	const photographer = photographers.find(
 		(photographer) => photographer.id === photographerId
 	);
@@ -13,21 +15,23 @@ async function getPhotographer() {
 	return { ...photographer, medias: [...photographerMedias] };
 }
 
+// Crééer une Vue pour le photographe et l'insérer dans la page
 function displayPhotographer(photographer) {
 	const photographersSection = document.querySelector("#main");
 
-	const photographerVue = new ProfileVue(photographer);
+	const photographerVue = new ProfileVue(photographer); // eslint-disable-line
 
 	const userProfileDOM = photographerVue.getUserProfileDOM();
 	photographersSection.appendChild(userProfileDOM);
 }
 
-//Decorator Design Pattern
+// Crééer la liste initiale d'items du photographe à l'aide du Decorator Design Pattern
 function displayOptions(photographer) {
 	photographer.listItems = ["Popularité", "Date", "Titre"];
 	return photographer;
 }
 
+// Modifier la liste d'items du photographe
 function modifyList(photographer, itemText) {
 	const listItemsModified = photographer.listItems.filter(
 		(item) => item !== itemText
@@ -37,14 +41,17 @@ function modifyList(photographer, itemText) {
 	return photographer;
 }
 
+//Trier les médias par likes
 function sortByLikes(medias) {
 	return medias.sort((a, b) => +b.likes - +a.likes);
 }
 
+//Trier les médias par date
 function sortByDate(medias) {
 	return medias.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
+//Trier les médias par titre en ordre alphabétique
 function sortByTitle(medias) {
 	medias.sort((a, b) => {
 		const x = a.title.toLowerCase();
@@ -53,18 +60,21 @@ function sortByTitle(medias) {
 	});
 }
 
+//Effacer le HTML du main et l'afficher à nouveau avec des nouveaux paramètres
 function cleanAndPaintSection(photographer) {
 	const photographersSection = document.querySelector("#main");
 	photographersSection.innerHTML = "";
-	displayPhotographer(new Photographer(photographer));
+	displayPhotographer(new Photographer(photographer)); // eslint-disable-line
 	displayModal(photographer.name);
 	sortingItems(photographer);
 	displayLightbox(photographer);
 }
 
+// Trier la galerie en fonction de l'item choisi
 function sortingItems(photographer) {
 	const sortingBox = document.querySelector(".sorting-box");
 
+	//Gérer l'accessibilité de la liste d'items
 	sortingBox.addEventListener("mouseover", (e) => {
 		e.target.setAttribute("aria-expanded", "true");
 	});
@@ -72,6 +82,7 @@ function sortingItems(photographer) {
 		e.target.setAttribute("aria-expanded", "false");
 	});
 
+	// Event listener - click sur un item
 	sortingBox.addEventListener("click", (e) => {
 		if (e.target.tagName === "P") {
 			modifyList(photographer, e.target.textContent);
@@ -89,6 +100,7 @@ function sortingItems(photographer) {
 		}
 	});
 
+	// Event listener - appuyant sur la touche "Espace" ou "Enter" etant sur un item
 	sortingBox.addEventListener("keydown", (e) => {
 		if (e.key === " " || e.key === "Enter") {
 			sortingBox.focus();
@@ -110,6 +122,7 @@ function sortingItems(photographer) {
 	});
 }
 
+//Fermer la modale
 function closeModal(formModal) {
 	const sentButton = document.querySelector("#sent-button");
 	const closeButton = document.querySelector(".close-btn");
@@ -129,17 +142,26 @@ function closeModal(formModal) {
 	});
 }
 
+// Gestion des tabulations pour la modale et la lightbox s'aidant des events listeners
 function tabManagement(selector, modalObject) {
 	const modal = document.querySelector(selector);
 	const modalWrapper = document.querySelector(".modal-wrapper");
 	const lightboxWrapper = document.querySelector(".lightbox-wrapper");
 	modalWrapper.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") modalObject.closeModal();
+		if (
+			e.key === "Escape" &&
+			modalObject.$wrapper.classList.contains("modal")
+		)
+			modalObject.closeModal();
 	});
 	lightboxWrapper.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") modalObject.closeLightbox();
+		if (
+			e.key === "Escape" &&
+			modalObject.$wrapper.classList.contains("lightbox")
+		)
+			modalObject.closeLightbox();
 	});
-	const children = modal.querySelectorAll('[tabindex="0"]');
+	const children = modal.querySelectorAll("[tabindex='0']");
 	children.forEach((child, i) => {
 		child.addEventListener("keydown", (e) => {
 			if (e.key === "Tab" && i === children.length - 1) {
@@ -171,8 +193,9 @@ function tabManagement(selector, modalObject) {
 	});
 }
 
+// Afficher la modale
 function displayModal(name) {
-	const formModal = new FormModal(name);
+	const formModal = new FormModal(name); // eslint-disable-line
 	const contactButton = document.querySelector("#contact-button");
 
 	contactButton.addEventListener("click", () => {
@@ -182,6 +205,7 @@ function displayModal(name) {
 	});
 }
 
+// Validation et la mise en forme pour les inputs invalides
 function invalidInput(input) {
 	input.style.border = "1px solid #005C00";
 	const label = document.querySelector(`label[for="${input.id}"]`);
@@ -193,6 +217,7 @@ function invalidInput(input) {
 	return false;
 }
 
+// Validation et la mise en forme pour les inputs valides
 function validInput(input) {
 	input.style.border = "none";
 	const label = document.querySelector(`label[for="${input.id}"]`);
@@ -204,13 +229,14 @@ function validInput(input) {
 	return true;
 }
 
+// Tester si les inputs de type texts sont valides
 function checkName(name) {
 	const nameRegex = /^[a-zA-Z]{2,30}$/;
 	const isValid = nameRegex.test(name.value + "");
 	return isValid ? validInput(name) : invalidInput(name);
 }
 
-// Check email function
+// Tester si les inputs de type email sont valides
 function checkEmail(email) {
 	const emailRegex =
 		/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -218,6 +244,7 @@ function checkEmail(email) {
 	return isValid ? validInput(email) : invalidInput(email);
 }
 
+// Vérifier si tous les inputs sont valides
 function checkInputs() {
 	const firstName = document.getElementById("first-name");
 	const lastName = document.getElementById("last-name");
@@ -248,10 +275,11 @@ function checkInputs() {
 	}
 }
 
+// Crééer la lightbox et gestion des events listeners de ses icônes
 function createLightbox(media, photographer) {
 	const mediaToFind = photographer.medias.find((med) => +media.id === med.id);
-	const lightboxModel = new Lightbox(mediaToFind, photographer.medias);
-	let lightbox = new LightboxComponent(lightboxModel);
+	const lightboxModel = new Lightbox(mediaToFind, photographer.medias); // eslint-disable-line
+	let lightbox = new LightboxComponent(lightboxModel); // eslint-disable-line
 	lightbox.createLightbox();
 	tabManagement(".lightbox", lightbox);
 
@@ -290,9 +318,9 @@ function createLightbox(media, photographer) {
 	});
 }
 
+// Afficher la lightbox, manager ses events listeners et gestion des ses likes
 function displayLightbox(photographer) {
 	const galleryContainer = document.querySelector(".gallery__container");
-	const lightbox = new LightboxComponent();
 
 	galleryContainer.addEventListener("click", (e) => {
 		if (e.target.classList.contains("media__image")) {
@@ -347,10 +375,13 @@ function displayLightbox(photographer) {
 	});
 }
 
+//Modifier le html des likes d'une media
 function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
+	/*eslint-disable */
 	likeSpan.innerHTML = `
 		<span class="media__likes">
 			${likes}
+			
 			${
 				mediaContainer.classList.contains("liked")
 					? '<i class="fa-solid fa-heart" tabindex="0">'
@@ -359,6 +390,7 @@ function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
 			</i>
 		</span>
 	`;
+	/* eslint-enable */
 
 	const likesSpanDiv = document.querySelector(".likes");
 	likesSpanDiv.innerHTML = `${photographer.medias
@@ -366,6 +398,7 @@ function modifyLikesSpan(likeSpan, mediaContainer, likes, photographer) {
 		.reduce((acc, cum) => acc + cum)} <i class="fa-solid fa-heart">`;
 }
 
+// Gestion des likes d'une media
 function manageLikes(photographer) {
 	const galleryContainer = document.querySelector(".gallery__container");
 	galleryContainer.addEventListener("click", (e) => {
@@ -399,14 +432,16 @@ function manageLikes(photographer) {
 	});
 }
 
-async function init() {
+//Initialise la page du photographe
+async function initPhotographerPage() {
 	const photographer = await getPhotographer();
 	displayOptions(photographer);
-	displayPhotographer(new Photographer(photographer));
+	displayPhotographer(new Photographer(photographer)); // eslint-disable-line
 	displayModal(photographer.name);
 	sortingItems(photographer);
 	displayLightbox(photographer);
 	manageLikes(photographer);
 }
 
-init();
+//Initialise la page du photographe
+initPhotographerPage();

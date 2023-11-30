@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class SortingComponent {
 	constructor(listItems) {
 		this._listItems = listItems;
@@ -5,6 +6,7 @@ class SortingComponent {
 		this.$wrapper.setAttribute("class", "sorting-photos");
 	}
 
+	//Crééer le HTML pour le SortingComponent
 	render() {
 		const label = document.createElement("p");
 		label.setAttribute("id", "sorting-label");
@@ -14,7 +16,7 @@ class SortingComponent {
 
 		const div = document.createElement("div");
 		div.setAttribute("class", "sorting-box");
-		div.setAttribute("role", "listbox");
+		div.setAttribute("role", "list");
 		div.setAttribute("aria-labelledby", "sorting-label");
 		div.setAttribute("aria-haspopup", "true");
 		div.setAttribute("aria-expanded", "false");

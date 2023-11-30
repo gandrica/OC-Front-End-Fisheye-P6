@@ -1,22 +1,29 @@
 {
-  "name": "oc-front-end-fisheye-p6",
-  "version": "1.0.0",
-  "description": "Projet 6 Openclassrooms parcours dévéloppeur Javascript - React ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gandrica/OC-Front-End-Fisheye-P6.git"
-  },
-  "author": "Gabriel ANDRICA",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gandrica/OC-Front-End-Fisheye-P6/issues"
-  },
-  "homepage": "https://github.com/gandrica/OC-Front-End-Fisheye-P6#readme",
-  "devDependencies": {
-    "eslint": "^8.54.0"
-  }
+	"name": "oc-front-end-fisheye-p6",
+	"version": "1.0.0",
+	"description": "Projet 6 Openclassrooms parcours dévéloppeur Javascript - React ",
+	"main": "index.js",
+	"scripts": {
+		"lint": "eslint ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gandrica/OC-Front-End-Fisheye-P6.git"
+	},
+	"author": "Gabriel ANDRICA",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/gandrica/OC-Front-End-Fisheye-P6/issues"
+	},
+	"homepage": "https://github.com/gandrica/OC-Front-End-Fisheye-P6#readme",
+	"devDependencies": {
+		"eslint": "^8.54.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.29.0",
+		"eslint-plugin-n": "^16.3.1",
+		"eslint-plugin-promise": "^6.1.1"
+	},
+	"dependencies": {
+		"prettier": "^3.1.0"
+	}
 }

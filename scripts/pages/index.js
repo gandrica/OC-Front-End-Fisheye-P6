@@ -1,10 +1,12 @@
+// Afficher les photographes
 async function displayData(photographers) {
 	const photographersSection = document.querySelector(
 		".photographer_section"
 	);
 
 	photographers.forEach((photographer) => {
-		const photographerModel = new Photographer(photographer);
+		const photographerModel = new Photographer(photographer); // eslint-disable-line
+		// eslint-disable-next-line
 		const photographerTemplate = new PhotographerComponent(
 			photographerModel
 		);
@@ -13,6 +15,7 @@ async function displayData(photographers) {
 	});
 }
 
+// Obtenir l'ID de la card et rediriger vers la page du photographe
 function getCardId() {
 	const photographersSection = document.querySelector(
 		".photographer_section"
@@ -44,11 +47,17 @@ function getCardId() {
 	});
 }
 
+//Initialise la page d'accueil
 async function init() {
 	// Récupère les datas des photographes
-	const { photographers } = await getPhotographers();
+	const { photographers } = await getPhotographers(); // eslint-disable-line
+
+	// Afficher les photographes
 	displayData(photographers);
+
+	// Obtenir l'ID de la card et rediriger vers la page du photographe
 	getCardId();
 }
 
+//Lance la page d'accueil
 init();

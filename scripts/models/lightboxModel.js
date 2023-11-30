@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class Lightbox extends Media {
 	constructor(media, medias) {
 		super(media);
@@ -6,6 +7,7 @@ class Lightbox extends Media {
 		this._video = media.video;
 	}
 
+	//Getters de la Lightbox
 	get medias() {
 		return this._medias;
 	}
@@ -17,6 +19,7 @@ class Lightbox extends Media {
 		return this._video;
 	}
 
+	//Trouver l'index de cette media dans la liste de medias
 	findIndexOfMedia() {
 		const mediaIndex = this._medias.findIndex((media) => {
 			return this._media === media;
@@ -24,6 +27,7 @@ class Lightbox extends Media {
 		return mediaIndex;
 	}
 
+	// Obtenir la media suivante dans les medias
 	nextMedia() {
 		const mediasLength = this._medias.length;
 		const mediaIndex = this.findIndexOfMedia();
@@ -36,10 +40,11 @@ class Lightbox extends Media {
 		}
 	}
 
+	// Obtenir la media précédente dans les medias
 	previousMedia() {
 		const mediasLength = this._medias.length;
 		const mediaIndex = this.findIndexOfMedia();
-		if (mediaIndex - 1 <= 0) {
+		if (mediaIndex - 1 < 0) {
 			this._media = this._medias[mediasLength - 1];
 			return this._media;
 		} else {

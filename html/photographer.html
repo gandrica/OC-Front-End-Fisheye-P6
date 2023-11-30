@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 	<head>
 		<link href="../css/style.css" rel="stylesheet" type="text/css" />
@@ -11,7 +11,8 @@
 		<title>Fisheye - photographe</title>
 	</head>
 	<body>
-		<header class="logo-header" role="banner">
+		<!-- Le Header de la page avec le profile du photographe -->
+		<header class="logo-header">
 			<a
 				href="../index.html"
 				aria-label="Lien vers la page d'accueil"
@@ -22,13 +23,22 @@
 					class="logo"
 			/></a>
 		</header>
-		<main id="main" role="main"></main>
+		<!-- Dans le main sont inserés les components pour trier, pour afficher la galerie medias et les likes   -->
+		<main id="main"></main>
+		<!-- Dans cette section est affichée la modale -->
 		<div class="modal-wrapper"></div>
+		<!-- Dans cette section est affichée la lightbox -->
 		<div class="lightbox-wrapper"></div>
+
+		<!-- Le script pour accèder aux icons Fontawesome -->
 		<script
 			src="https://kit.fontawesome.com/fa1582c6b9.js"
 			crossorigin="anonymous"
 		></script>
+
+		<!-- Les fichiers Javascript utilisés par cette page -->
+
+		<!-- Pour récupèrer les datas des photographes -->
 		<script src="./../scripts/api/getPhotographers.js"></script>
 
 		<!-- Components -->

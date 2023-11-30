@@ -1,5 +1,6 @@
 @import url("photographer.css");
 
+/* Les variables */
 :root {
 	--text-color-primary: #d3573c;
 	--text-color-secondary: #901c1c;
@@ -15,6 +16,7 @@ body {
 	margin: 0;
 }
 
+/* Le Header de la page */
 header {
 	display: flex;
 	flex-direction: row;
@@ -33,6 +35,7 @@ h1 {
 	margin-left: 100px;
 }
 
+/* La section des photographes */
 .photographer_section {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -48,25 +51,10 @@ h1 {
 	flex-direction: column;
 }
 
-.photographer_section article h2 {
-	color: var(--text-color-primary);
-	font-size: 36px;
-	font-weight: 500;
-	margin-bottom: 0;
-}
-
-.photographer_section article a {
+/* Le link vers la page des photographes avec l'image et le nom */
+.photographer_section .link-index {
 	cursor: pointer;
 	text-decoration: none;
-	justify-self: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	overflow: hidden;
-}
-
-.link-index {
 	height: 260px;
 	width: 320px;
 	overflow: hidden;
@@ -74,6 +62,7 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	justify-self: center;
 }
 
 .link-index:hover,
@@ -81,6 +70,7 @@ h1 {
 	border: 3px solid black;
 }
 
+/* L'image du profile*/
 .profile__image-container {
 	height: 200px;
 	width: 200px;
@@ -94,6 +84,7 @@ h1 {
 	height: 100%;
 }
 
+/* Styliser image une par une */
 .profile__picture.id-243 {
 	transform: scale(1.8);
 	object-fit: cover;
@@ -122,13 +113,20 @@ h1 {
 	object-fit: cover;
 	object-position: -50px 20px;
 }
+
+/* Le nom du profile*/
 .profile__image-name {
+	color: var(--text-color-primary);
+	font-size: 36px;
+	font-weight: 500;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	margin: 12px 0 4px;
 }
+
+/* La description du profile*/
 .profile__description {
 	justify-self: center;
 	display: flex;
@@ -139,15 +137,18 @@ h1 {
 	margin-top: 0;
 }
 
+/* La ville et le pays */
 .profile__description .city-country {
 	color: var(--button-bg-color-primary);
 	font-size: 1.1em;
 }
 
+/* Le texte */
 .profile__description .tagline {
 	font-size: 0.9em;
 }
 
+/* Le pris par jour */
 .profile__description .price {
 	color: var(--gray-color);
 	font-size: 0.9em;

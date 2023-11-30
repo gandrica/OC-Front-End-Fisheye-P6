@@ -1,3 +1,4 @@
+/* Les variables */
 :root {
 	--text-color-primary: #d3573c;
 	--text-color-secondary: #901c1c;
@@ -16,35 +17,64 @@ body {
 	padding: 50px 100px;
 	font-family: "DM Sans", sans-serif;
 }
-.photographer__section {
-	z-index: 2;
-}
 
+/* Le logo de la page */
 .logo-header .logo {
 	margin-left: 0;
 }
 
+/*La section avec le profile du photographe*/
+.photographer__section {
+	z-index: 2;
+}
+
+/* Le header de la section */
 .header__section {
 	height: 314px;
 	background-color: #fafafa;
 	padding: 50px;
 }
 
+/* Le nom */
 .header__title-group h1 {
 	color: var(--button-bg-color-secondary);
 	font-size: 3.4em;
 	font-weight: 200;
 	margin-bottom: 0;
 }
-.header__title-group p {
-	font-size: 1.2em;
-}
 
+/* Le groupe ville-pays / texte */
 .header__section .profile__description {
 	align-items: flex-start;
 	line-height: 2.5;
 }
 
+/* Le texte */
+.header__title-group p {
+	font-size: 1.2em;
+}
+
+/* Button contact */
+.contact_button {
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	padding: 11px;
+	width: 170px;
+	height: 70px;
+	border: none;
+	background-color: #901c1c;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.contact_button:hover,
+.contact_button:focus {
+	border: 3px solid black;
+}
+
+/* 
+L'image du profile */
 .profile__picture-div {
 	height: 200px;
 	width: 200px;
@@ -61,6 +91,7 @@ body {
 	height: 100%;
 }
 
+/* Le groupe pour trier les photos */
 .sorting-photos {
 	position: relative;
 	display: flex;
@@ -112,7 +143,6 @@ body {
 	font-size: 1.3em;
 	margin-top: -5px;
 	margin-right: 5px;
-	/* content: "˄"; */
 }
 
 .sorting-item:nth-last-of-type(2) {
@@ -122,6 +152,7 @@ body {
 	padding: 10px 5px;
 }
 
+/* La galerie medias */
 .gallery__container {
 	position: relative;
 	top: 20px;
@@ -151,17 +182,8 @@ body {
 	padding: 0 20px;
 }
 
+/* Animation pour l'apparition des medias une par une */
 .media__container:first-of-type {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 0.5s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 0.5s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -169,16 +191,6 @@ body {
 }
 
 .media__container:nth-of-type(2) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 1s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 1s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -186,16 +198,6 @@ body {
 }
 
 .media__container:nth-of-type(3) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 1.5s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 1.5s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -203,16 +205,6 @@ body {
 }
 
 .media__container:nth-of-type(4) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 2s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 2s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -220,16 +212,6 @@ body {
 }
 
 .media__container:nth-of-type(5) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 2.5s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 2.5s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -237,16 +219,6 @@ body {
 }
 
 .media__container:nth-of-type(6) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 3s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 3s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -254,16 +226,6 @@ body {
 }
 
 .media__container:nth-of-type(7) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 3.5s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 3.5s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -271,16 +233,6 @@ body {
 }
 
 .media__container:nth-of-type(8) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 4s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 4s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -288,16 +240,6 @@ body {
 }
 
 .media__container:nth-of-type(9) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 4.5s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 4.5s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
@@ -305,21 +247,24 @@ body {
 }
 
 .media__container:nth-of-type(10) {
-	-moz-animation-name: dropHeader;
-	-moz-animation-iteration-count: 1;
-	-moz-animation-timing-function: ease-in;
-	-moz-animation-duration: 5s;
-
-	-webkit-animation-name: dropHeader;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in;
-	-webkit-animation-duration: 5s;
-
 	animation-name: dropHeader;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 	animation-duration: 5s;
 }
+
+@keyframes dropHeader {
+	0% {
+		opacity: 0;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .media__link {
 	display: inline-block;
 	width: 100%;
@@ -336,17 +281,16 @@ body {
 	height: 90%;
 }
 
+/* le nom de la photo et le nombre des likes*/
 .media__description {
 	display: flex;
 	justify-content: space-between;
-}
-
-.media__description {
 	font-size: 1.7em;
 	font-weight: 400;
 	color: var(--button-bg-color-primary);
 }
 
+/* Le groupe nombre de likes - euros par jour */
 .likes__container {
 	position: fixed;
 	bottom: 0;
@@ -368,30 +312,7 @@ body {
 	border: 3px solid black;
 }
 
-.photograph-header {
-	background-color: #fafafa;
-	height: 300px;
-	margin: 0 100px;
-}
-
-.contact_button {
-	font-size: 20px;
-	font-weight: bold;
-	color: white;
-	padding: 11px;
-	width: 170px;
-	height: 70px;
-	border: none;
-	background-color: #901c1c;
-	border-radius: 5px;
-	cursor: pointer;
-}
-
-.contact_button:hover,
-.contact_button:focus {
-	border: 3px solid black;
-}
-
+/* La modale */
 .modal-wrapper {
 	display: none;
 	width: 100%;
@@ -425,6 +346,7 @@ body {
 	margin-bottom: 40px;
 }
 
+/* Le titre de la modale */
 .form-heading {
 	justify-content: space-between;
 	width: 100%;
@@ -455,6 +377,7 @@ body {
 	border: 3px solid black;
 }
 
+/* Le formulaire */
 form {
 	display: flex;
 	width: 100%;
@@ -462,6 +385,7 @@ form {
 	align-items: flex-start;
 }
 
+/* Les inputs */
 form label {
 	color: rgba(49, 46, 46, 1);
 	font-size: 36px;
@@ -491,6 +415,7 @@ form input:focus {
 	height: 170px;
 }
 
+/* Le button envoyer */
 #sent-button {
 	display: flex;
 	justify-content: center;
@@ -512,20 +437,7 @@ form input:focus {
 	letter-spacing: 2px;
 }
 
-.photos-likes {
-	width: 200px;
-	background-color: #db8876;
-	position: fixed;
-	bottom: 0%;
-	right: 20px;
-	padding: 16px 16px;
-	border-radius: 10px 10px 0 0;
-	display: flex;
-	justify-content: space-between;
-	font-weight: bolder;
-	font-size: 1.2em;
-}
-
+/* La lightbox */
 .lightbox-wrapper {
 	display: none;
 	position: fixed;
@@ -555,51 +467,6 @@ form input:focus {
 	border: none;
 }
 
-.lightbox:focus .media__container {
-	border: 3px solid black;
-}
-
-.lightbox .icons-div {
-	width: 100%;
-	height: 100%;
-}
-
-.lightbox i {
-	font-size: 3em;
-	color: #901c1c;
-}
-.lightbox-close-icon {
-	position: absolute;
-	top: 9%;
-	right: 7%;
-	font-size: 20px;
-	cursor: pointer;
-}
-
-.lightbox-close-icon:hover,
-.lightbox-left-icon:hover,
-.lightbox-right-icon:hover,
-.lightbox-close-icon:focus,
-.lightbox-left-icon:focus,
-.lightbox-right-icon:focus {
-	border: 3px solid black;
-}
-
-.lightbox-left-icon {
-	position: absolute;
-	top: 45%;
-	left: 8%;
-	cursor: pointer;
-	font-size: 16px;
-}
-.lightbox-right-icon {
-	position: absolute;
-	top: 45%;
-	right: 8%;
-	cursor: pointer;
-	font-size: 16px;
-}
-
 .lightbox .media__container {
 	position: absolute;
 	top: 6%;
@@ -612,6 +479,12 @@ form input:focus {
 	width: 73vw;
 	height: 88vh;
 }
+
+.lightbox:focus .media__container {
+	border: 3px solid black;
+}
+
+/* L'image */
 .lightbox .media__image {
 	border-radius: 5px;
 }
@@ -620,6 +493,7 @@ form input:focus {
 	align-self: flex-start;
 }
 
+/* Le nom */
 .lightbox .media__description.media__title {
 	text-align: left;
 }
@@ -628,26 +502,49 @@ form input:focus {
 	display: none;
 }
 
-@keyframes dropHeader {
-	0% {
-		opacity: 0;
-	}
-	99% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+/* Les icones de la lightbox */
+.lightbox .icons-div {
+	width: 100%;
+	height: 100%;
 }
 
-@-webkit-keyframes dropHeader {
-	0% {
-		opacity: 0;
-	}
-	99% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+.lightbox i {
+	font-size: 3em;
+	color: #901c1c;
+}
+
+.lightbox-close-icon:hover,
+.lightbox-left-icon:hover,
+.lightbox-right-icon:hover,
+.lightbox-close-icon:focus,
+.lightbox-left-icon:focus,
+.lightbox-right-icon:focus {
+	border: 3px solid black;
+}
+
+/* Icon X  */
+.lightbox-close-icon {
+	position: absolute;
+	top: 9%;
+	right: 7%;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+/* Icon gauche*/
+.lightbox-left-icon {
+	position: absolute;
+	top: 45%;
+	left: 8%;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+/* Icon droite */
+.lightbox-right-icon {
+	position: absolute;
+	top: 45%;
+	right: 8%;
+	cursor: pointer;
+	font-size: 16px;
 }

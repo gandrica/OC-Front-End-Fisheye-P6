@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class FormModal {
 	constructor(name) {
 		this._name = name;
@@ -12,11 +13,13 @@ class FormModal {
 		this.$modalWrapper = document.querySelector(".modal-wrapper");
 	}
 
+	// Nettoyer le HTML de la modale
 	clearModal() {
 		this.$modalWrapper.innerHTML = "";
 		return this.$modalWrapper;
 	}
 
+	//Crééer le HTML d'une modale
 	createForm() {
 		const form = `
             <div class="form-wrapper">
@@ -57,11 +60,12 @@ class FormModal {
 		this.$modalWrapper.classList.add("modal-on");
 		this.$modalWrapper.style.display = "flex";
 
-		this.$modalWrapper.style.zIndex = "3";
+		this.$modalWrapper.style.zIndex = "8";
 
 		this.$wrapper.focus();
 	}
 
+	//Fermer la modale
 	closeModal() {
 		this.$modalWrapper.classList.remove("modal-on");
 		this.$modalWrapper.style.display = "none";

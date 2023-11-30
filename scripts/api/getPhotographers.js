@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 async function getPhotographers() {
 	const photographersData = await fetch("./../data/photographers.json");
 	const photographersJSON = await photographersData.json();
@@ -8,6 +9,7 @@ async function getPhotographers() {
 	};
 }
 
+// eslint-disable-next-line
 async function getMedias() {
 	const mediasData = await fetch("./../data/photographers.json");
 	const mediasJSON = await mediasData.json();

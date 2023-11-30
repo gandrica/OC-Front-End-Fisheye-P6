@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class HeaderComponent {
 	constructor(id, name, city, country, tagline, picture) {
 		this._id = id;
@@ -12,6 +13,7 @@ class HeaderComponent {
 		this.$wrapper.setAttribute("aria-label", "Photograph section header");
 	}
 
+	//Créér le HTML du HeaderComponent
 	getHeader() {
 		//Section Header
 		const titleDiv = document.createElement("div");
@@ -39,7 +41,7 @@ class HeaderComponent {
 		contactButton.textContent = "Contactez-moi";
 
 		const imgDiv = document.createElement("div");
-		imgDiv.setAttribute("class", `profile__picture-div`);
+		imgDiv.setAttribute("class", "profile__picture-div");
 
 		const img = document.createElement("img");
 		img.setAttribute("src", this._picture);

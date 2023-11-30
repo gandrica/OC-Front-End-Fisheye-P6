@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class Media {
 	constructor(media) {
 		this._media = media;
@@ -8,6 +9,9 @@ class Media {
 		this._photographerId = media.photographerId;
 		this._price = media.price;
 	}
+
+	//Getters de la media
+
 	get media() {
 		return this._media;
 	}

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class Photographer {
 	constructor(data) {
 		this._name = data.name;
@@ -11,6 +12,8 @@ class Photographer {
 		this._picture = `./../assets/photographers/ID_Photos/${this._portrait}`;
 		this._listItems = data.listItems;
 	}
+
+	//Getters du Photographer
 
 	get name() {
 		return this._name;

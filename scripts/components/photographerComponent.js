@@ -1,12 +1,15 @@
+// eslint-disable-next-line
 class PhotographerComponent {
 	constructor(data) {
-		this._photographer = new Photographer(data);
+		this._photographer = new Photographer(data); // eslint-disable-line
 	}
 
+	//Getter pour le photographer
 	get photographer() {
 		return this._photographer;
 	}
 
+	// Crééer le HTML du PhotographerComponent utilisé sur la page d'accueil
 	getUserCardDOM() {
 		const article = document.createElement("article");
 		article.setAttribute("id", this._photographer.id);

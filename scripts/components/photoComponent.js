@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class PhotoComponent {
 	constructor(media) {
 		this._media = media;
@@ -7,6 +8,7 @@ class PhotoComponent {
 		this.$wrapper.setAttribute("id", this._media.id);
 	}
 
+	// Crééer le HTML du PhotoComponent
 	render() {
 		const link = document.createElement("a");
 		link.setAttribute("href", "#");
@@ -25,9 +27,13 @@ class PhotoComponent {
 
 		const description = document.createElement("p");
 		description.setAttribute("class", "media__description");
+		description.setAttribute(
+			"aria-label",
+			"Le groupe nom de la photo / nombre de likes de la photo"
+		);
 		description.innerHTML = `
 					<span class="media__title">${this._media.title}</span>
-					<span class="media__likes" aria-label="likes">${this._media.likes} <i class="fa-regular fa-heart" tabindex="0">
+					<span class="media__likes">${this._media.likes} <i class="fa-regular fa-heart" tabindex="0">
 		</i></span>
 				`;
 

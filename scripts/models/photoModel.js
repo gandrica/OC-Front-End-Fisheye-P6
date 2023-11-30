@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class Photo extends Media {
 	constructor(media) {
 		super(media);

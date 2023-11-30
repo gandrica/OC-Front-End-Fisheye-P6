@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 class Video extends Media {
 	constructor(media) {
 		super(media);
