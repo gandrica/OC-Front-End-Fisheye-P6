@@ -65,7 +65,6 @@ h1 {
 	justify-self: center;
 }
 
-.link-index:hover,
 .link-index:focus {
 	border: 3px solid black;
 }

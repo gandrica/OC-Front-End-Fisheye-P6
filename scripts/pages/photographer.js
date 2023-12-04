@@ -68,6 +68,7 @@ function cleanAndPaintSection(photographer) {
 	displayModal(photographer.name);
 	sortingItems(photographer);
 	displayLightbox(photographer);
+	manageLikes(photographer);
 }
 
 // Trier la galerie en fonction de l'item choisi
@@ -161,14 +162,17 @@ function tabManagement(selector, modalObject) {
 		)
 			modalObject.closeLightbox();
 	});
-	const children = modal.querySelectorAll("[tabindex='0']");
-	children.forEach((child, i) => {
+	const modalChildren = modal.querySelectorAll("[tabindex='0']");
+	const wrapper = modalObject.$wrapper;
+	modalChildren.forEach((child, i) => {
 		child.addEventListener("keydown", (e) => {
-			if (e.key === "Tab" && i === children.length - 1) {
+			// console.log(i);
+			// console.log(child);
+			// console.log(children.length);
+			if (e.key === "Tab" && i === modalChildren.length - 1) {
 				e.preventDefault();
-				children[0].focus();
-			}
-			if (modalObject.$wrapper.classList.contains("modal")) {
+				modalChildren[0].focus();
+			} else if (modalObject.$wrapper.classList.contains("modal")) {
 				if (
 					(e.key === " " || e.key === "Enter") &&
 					(i === 0 || i === 5)
@@ -183,10 +187,30 @@ function tabManagement(selector, modalObject) {
 						}
 					}
 				}
-			} else {
-				if (i === 2) {
-					e.preventDefault();
-					children[0].focus();
+			} else if (wrapper.classList.contains("lightbox")) {
+				if (
+					wrapper.children[1].children[0].firstChild.classList.contains(
+						"media__video"
+					)
+				) {
+					if (i === 2) {
+						e.preventDefault();
+						modalChildren[4].focus();
+					} else if (
+						(e.key === " " || e.key === "Enter") &&
+						i === 4
+					) {
+						e.preventDefault();
+						modalChildren[4].focus();
+					} else if (i === 4) {
+						e.preventDefault();
+						modalChildren[0].focus();
+					}
+				} else {
+					if (i === 2) {
+						e.preventDefault();
+						modalChildren[0].focus();
+					}
 				}
 			}
 		});
@@ -288,7 +312,7 @@ function createLightbox(media, photographer) {
 		lightbox.closeLightbox();
 	});
 	closeIcon.addEventListener("keydown", (e) => {
-		if (e.key === " " || e.key === "Espace") {
+		if (e.key === " " || e.key === "Enter") {
 			lightbox.closeLightbox();
 		}
 	});
@@ -299,7 +323,7 @@ function createLightbox(media, photographer) {
 		createLightbox(lightboxModel.previousMedia(), photographer);
 	});
 	leftIcon.addEventListener("keydown", (e) => {
-		if (e.key === " " || e.key === "Espace") {
+		if (e.key === " " || e.key === "Enter") {
 			lightbox.clearLightbox();
 			createLightbox(lightboxModel.previousMedia(), photographer);
 		}
@@ -311,7 +335,7 @@ function createLightbox(media, photographer) {
 		createLightbox(lightboxModel.nextMedia(), photographer);
 	});
 	rightIcon.addEventListener("keydown", (e) => {
-		if (e.key === " " || e.key === "Espace") {
+		if (e.key === " " || e.key === "Enter") {
 			lightbox.clearLightbox();
 			createLightbox(lightboxModel.nextMedia(), photographer);
 		}
@@ -325,7 +349,11 @@ function displayLightbox(photographer) {
 	galleryContainer.addEventListener("click", (e) => {
 		if (e.target.classList.contains("media__image")) {
 			createLightbox(e.target.closest(".media__container"), photographer);
-		} else if (e.target.classList.contains("media__video")) {
+		} else if (
+			e.target.classList.contains("media__video") ||
+			(e.target.tagName !== "I" &&
+				e.target.firstChild.classList.contains("media__video"))
+		) {
 			createLightbox(e.target.closest(".media__container"), photographer);
 		}
 	});

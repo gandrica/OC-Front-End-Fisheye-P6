@@ -23,6 +23,33 @@ class LightboxComponent {
         `;
 
 		const mediaFactory = new MediaFactory(this._media); // eslint-disable-line
+		const video =
+			mediaFactory.firstChild.firstChild.classList.contains(
+				"media__video"
+			);
+		if (video) {
+			mediaFactory.firstChild.firstChild.setAttribute("tabindex", "0");
+			mediaFactory.firstChild.firstChild.play();
+			mediaFactory.firstChild.firstChild.addEventListener("click", () => {
+				if (mediaFactory.firstChild.firstChild.paused) {
+					mediaFactory.firstChild.firstChild.play();
+				} else {
+					mediaFactory.firstChild.firstChild.pause();
+				}
+			});
+			mediaFactory.firstChild.firstChild.addEventListener(
+				"keydown",
+				(e) => {
+					if (e.key === " " || e.key === "Enter") {
+						if (mediaFactory.firstChild.firstChild.paused) {
+							mediaFactory.firstChild.firstChild.play();
+						} else {
+							mediaFactory.firstChild.firstChild.pause();
+						}
+					}
+				}
+			);
+		}
 
 		this.$wrapper.appendChild(mediaFactory);
 		this.$lightboxWrapper.appendChild(this.$wrapper);

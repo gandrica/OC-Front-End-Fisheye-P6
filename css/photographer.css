@@ -9,10 +9,6 @@
 	--border-color: rgb(47, 204, 11);
 	--gray-color: #757575;
 }
-*:focus {
-	border: 3px solid black;
-}
-
 body {
 	padding: 50px 100px;
 	font-family: "DM Sans", sans-serif;
@@ -172,8 +168,7 @@ L'image du profile */
 	overflow: hidden;
 }
 
-.media__container:focus,
-.media__container:hover {
+.media__container:focus {
 	border: 3px solid black;
 }
 
@@ -274,11 +269,16 @@ L'image du profile */
 .media__image {
 	width: 100%;
 	height: 100%;
+	object-fit: fill;
 }
 
 .media__video {
-	width: 100%;
-	height: 90%;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	height: 40%;
 }
 
 /* le nom de la photo et le nombre des likes*/
@@ -459,12 +459,10 @@ form input:focus {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 86%;
+	width: 88%;
 	height: 88%;
-}
-
-.lightbox:focus {
-	border: none;
+	padding: 0 1%;
+	border-radius: 5px;
 }
 
 .lightbox .media__container {
@@ -480,13 +478,13 @@ form input:focus {
 	height: 88vh;
 }
 
-.lightbox:focus .media__container {
-	border: 3px solid black;
-}
-
 /* L'image */
 .lightbox .media__image {
 	border-radius: 5px;
+}
+.lightbox .media__video {
+	width: 100%;
+	height: 100%;
 }
 
 .lightbox .media__description {

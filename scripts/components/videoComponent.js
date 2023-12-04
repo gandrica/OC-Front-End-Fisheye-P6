@@ -19,8 +19,8 @@ class VideoComponent {
 
 		video.setAttribute("aria-label", this._media.title);
 		video.setAttribute("class", "media__video");
-		video.setAttribute("controls", "true");
-		video.setAttribute("tabindex", "0");
+		video.setAttribute("tabindex", "-1");
+		video.setAttribute("poster", "../../assets/icons/play-icon.png");
 
 		const source = document.createElement("source");
 		source.setAttribute(
